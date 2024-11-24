@@ -1,10 +1,10 @@
 <?php
 
-require_once 'Item.php';
+require_once('Item.php');
 
 class Ataque extends Item {
-    public function __construct(string $name) {
-        parent::__construct($name);
+    public function construct(string $name) {
+        parent::construct($name);
         $this->setTamanho(7);
         $this->setClasse("Ataque");
     }

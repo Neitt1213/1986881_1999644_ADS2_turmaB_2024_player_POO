@@ -46,9 +46,9 @@ class Inventario {
     }
 
     public function remover(Item $item): bool {
-        foreach ($this->itens as $key => $i) {
+        foreach ($this->itens as $chave => $i) {
             if ($i === $item) {
-                unset($this->itens[$key]);
+                unset($this->itens[$chave]);
                 return true;
             }
         } return false;
