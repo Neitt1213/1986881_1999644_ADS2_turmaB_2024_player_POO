@@ -19,7 +19,7 @@ class Inventario {
         if ($capacidadeMaxima >= 20) {
             $this->capacidadeMaxima = $capacidadeMaxima;
         } else {
-            $this->capacidadeMaxima = 0;
+            $this->capacidadeMaxima = 20;
         }
     }
 
@@ -27,12 +27,8 @@ class Inventario {
         return $this->itens;
     }
 
-    public function setItens($itens): void {
-        if (empty($itens)) {
-            $this->itens = [];
-        } else {
-            $this->itens = $itens;
-        }
+    public function setItens(array $itens): void {
+        $this->itens = $itens;
     }
 
     public function adicionar(Item $item): bool {

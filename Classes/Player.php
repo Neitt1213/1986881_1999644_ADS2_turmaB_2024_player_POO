@@ -8,8 +8,8 @@ class Player {
     private Inventario $inventario;
 
     public function __construct(string $nickname, int $nivel, Inventario $inventario) {
-        $this->nickname = $nickname;
-        $this->nivel = $nivel;
+        $this->setNickname($nickname);
+        $this->setNivel($nivel);
         $this->inventario = $inventario;
     }
 
@@ -41,7 +41,7 @@ class Player {
         return $this->inventario;
     }
 
-    public function setInventario(Inventario $inventario): void {
+    public function setInventario(Inventario $inventario): bool {
         if ($inventario->getCapacidadeMaxima() > 0) {
             $this->inventario = $inventario;
             return true;
@@ -50,20 +50,20 @@ class Player {
 
     public function coletarItem(Item $item): bool {
         if ($this->inventario->adicionar($item)) {
-            echo "O item '{$item->getNome()}' foi adicionado ao seu inventário.<br>";
+            echo "Um item foi adicionado ao seu inventário.<br>";
             return true;
         } else {
-            echo "Não há espaço suficiente para coletar o item '{$item->getNome()}'.<br>";
+            echo "Não há espaço suficiente para coletar o item.<br><br>";
             return false;
         }
     }
 
     public function soltarItem(Item $item): bool {
         if ($this->inventario->remover($item)) {
-            echo "O item '{$item->getNome()}' foi removido do seu inventário.<br>";
+            echo "Um item foi removido do seu inventário.<br>";
             return true;
         } else {
-            echo "O item '{$item->getNome()}' não foi encontrado no seu inventário.<br>";
+            echo "<br>Este item não foi encontrado no seu inventário.<br>";
             return false;
         }
     }
@@ -72,8 +72,8 @@ class Player {
         $this->nivel++;
         $aumento = $this->nivel * 3;
         $atualizacao = 20 + $aumento;
-        $this->inventario->setCapacidadeMaxima($catualizacao);
-        echo "Você subiu para o nível {$this->nivel}! E a capacidade máxima do seu inventário aumentou para {$atualizacao}.<br>";
+        $this->inventario->setCapacidadeMaxima($atualizacao);
+        echo "<br>Você subiu para o nível {$this->nivel}! E a capacidade máxima do seu inventário aumentou para {$atualizacao}.<br>";
     }
 }
 

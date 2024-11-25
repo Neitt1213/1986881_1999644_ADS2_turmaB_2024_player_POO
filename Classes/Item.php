@@ -11,7 +11,7 @@ class Item {
         $this->setClasse($classe);
     }
 
-    public function getNome(): string {
+    public function getName(): string {
         return $this->name;
     }
 
